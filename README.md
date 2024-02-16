@@ -1,5 +1,6 @@
 # face sign in
 pip install tk opencv-python face_recognition Pillow
+安装依赖的库`pip install tk opencv-python face_recognition Pillow`
 
 **Tkinter (tk):**
 
