@@ -9,7 +9,7 @@
 基于tk opencv-python face_recognition Pillow库开发
 安装依赖`pip install tk opencv-python face_recognition Pillow`
 
-如失败，请运行`pip install tk opencv-python face_recognition Pillow -i https://pypi.tuna.tsinghua.edu.cn/simple some-package`
+如失败，请运行`pip install tk opencv-python face_recognition Pillow -i https://pypi.tuna.tsinghua.edu.cn/simple`
 
 安装后在程序目录内使用shell(linux)或cmd(windows)运行
 
