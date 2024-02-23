@@ -1,6 +1,6 @@
 # face sign in
 
-声明：本项目已基于Apache 2.0协议开源
+声明：本项目已基于Apache 2.0协议开源,github链接“https://github.com/wangyifan20080208/face-sign-in”
 
 ## 运行环境搭建
 
