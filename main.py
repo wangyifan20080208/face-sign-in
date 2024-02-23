@@ -47,11 +47,11 @@ class FaceRecognitionApp:
 
             # 比对人脸
             for face_encoding in face_encodings:
-                # 计算欧氏距离（相似度）
+                # 计算欧氏距离
                 distance = face_recognition.face_distance([user_encoding], face_encoding)
                 similarity = 1 - distance[0]  # 相似度越大越相似
 
-                if similarity > 0.6:  # 通过调整相似度阈值确定登录条件
+                if similarity > 0.6:  
                     messagebox.showinfo("登录成功", f"欢迎回来，{username}，相似度：{similarity:.2f}")
                     self.video_capture.release()
                     self.root.destroy()

@@ -1,6 +1,27 @@
 # face sign in
-pip install tk opencv-python face_recognition Pillow
-安装依赖的库`pip install tk opencv-python face_recognition Pillow`
+
+声明：本项目已基于Apache 2.0协议开源
+
+## 运行环境搭建
+
+### python
+
+基于tk opencv-python face_recognition Pillow库开发
+安装依赖`pip install tk opencv-python face_recognition Pillow`
+
+如失败，请运行`pip install tk opencv-python face_recognition Pillow -i https://pypi.tuna.tsinghua.edu.cn/simple some-package`
+
+安装后在程序目录内使用shell(linux)或cmd(windows)运行
+
+`python main.py`
+
+### docker
+
+开发中
+
+***
+
+以下是所使用的python库
 
 **Tkinter (tk):**
 
