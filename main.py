@@ -9,29 +9,39 @@ class FaceRecognitionApp:
     def __init__(self, root):
         self.root = root
         self.root.title("人脸识别登录")
-        self.root.configure(bg="#f0f0f0")  # 设置背景色
+        self.root.configure(bg="#ffffff")  # 设置背景色
 
         # 初始化摄像头
         self.video_capture = cv2.VideoCapture(0)
 
         # 创建登录界面
-        self.label = tk.Label(root, text="请输入用户名：", font=('Segoe UI', 14), bg="#f0f0f0")
-        self.label.pack(pady=10)
+        self.label = tk.Label(root, text="请输入用户名：", font=('Segoe UI', 14), bg="#ffffff")
+        self.label.pack(pady=20)
 
         self.entry = tk.Entry(root, font=('Segoe UI', 12))
-        self.entry.pack(pady=5)
+        self.entry.pack(pady=10, padx=20, ipadx=10, ipady=5, fill=tk.X)
 
         self.login_button = tk.Button(root, text="登录", command=self.login, font=('Segoe UI', 12), bg="#4caf50", fg="white", relief=tk.FLAT)
-        self.login_button.pack(pady=5)
+        self.login_button.pack(pady=10, padx=20, ipadx=10, ipady=5, fill=tk.X)
+        self.login_button.bind("<Enter>", self.on_enter)
+        self.login_button.bind("<Leave>", self.on_leave)
 
         self.register_button = tk.Button(root, text="录入人脸", command=self.register_face, font=('Segoe UI', 12), bg="#2196f3", fg="white", relief=tk.FLAT)
-        self.register_button.pack(pady=5)
+        self.register_button.pack(pady=10, padx=20, ipadx=10, ipady=5, fill=tk.X)
+        self.register_button.bind("<Enter>", self.on_enter)
+        self.register_button.bind("<Leave>", self.on_leave)
 
         # 用户名和人脸图像的字典
         self.user_faces = self.load_faces()
 
         # 开始捕获摄像头图像
         self.start_capture()
+
+    def on_enter(self, event):
+        event.widget.config(bg="#64b5f6")
+
+    def on_leave(self, event):
+        event.widget.config(bg="#2196f3")
 
     def login(self):
         username = self.entry.get()
@@ -56,6 +66,7 @@ class FaceRecognitionApp:
                     messagebox.showinfo("登录成功", f"欢迎回来，{username}，相似度：{similarity:.2f}")
                     self.video_capture.release()
                     self.root.destroy()
+
                     break
                 else:
                     messagebox.showerror("登录失败", f"相似度不足，无法登录，相似度：{similarity:.2f}")
@@ -71,15 +82,15 @@ class FaceRecognitionApp:
         # 创建录入人脸的界面
         register_window = tk.Toplevel(self.root)
         register_window.title("录入人脸")
-        register_window.configure(bg="#f0f0f0")
+        register_window.configure(bg="#ffffff")
 
         # 创建提示标签
-        info_label = tk.Label(register_window, text="请调整姿势，然后点击按钮录入人脸", font=('Segoe UI', 12), bg="#f0f0f0")
-        info_label.pack(pady=10)
+        info_label = tk.Label(register_window, text="请调整姿势，然后点击按钮录入人脸", font=('Segoe UI', 12), bg="#ffffff")
+        info_label.pack(pady=20)
 
         # 创建按钮
         register_button = tk.Button(register_window, text="录入人脸", command=lambda: self.capture_and_register(username), font=('Segoe UI', 12), bg="#4caf50", fg="white", relief=tk.FLAT)
-        register_button.pack(pady=5)
+        register_button.pack(pady=10)
 
     def capture_and_register(self, username):
         # 读取摄像头图像
