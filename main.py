@@ -66,7 +66,7 @@ class FaceRecognitionApp:
                     messagebox.showinfo("登录成功", f"欢迎回来，{username}，相似度：{similarity:.2f}")
                     self.video_capture.release()
                     self.root.destroy()
-
+                    #print(frame)
                     break
                 else:
                     messagebox.showerror("登录失败", f"相似度不足，无法登录，相似度：{similarity:.2f}")
