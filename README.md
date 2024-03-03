@@ -7,10 +7,15 @@
 ### python
 安装visual studio2019 安装包附在根目录下
 安装C++的环境
+
+![Uploading 20200414214828873.png…]()
+
 基于tk opencv-python face_recognition Pillow库开发
 安装依赖`pip install tk opencv-python face_recognition Pillow`
 `pip install git+https://github.com/ageitgey/face_recognition_models`
-如失败，请运行`pip install tk opencv-python face_recognition Pillow -i https://pypi.tuna.tsinghua.edu.cn/simple`
+
+如失败，请运行`pip install tk open
+cv-python face_recognition Pillow -i https://pypi.tuna.tsinghua.edu.cn/simple`
 `pip install git+https://github.com/ageitgey/face_recognition_models`
 
 
