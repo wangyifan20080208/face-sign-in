@@ -10,6 +10,7 @@
 
 ![Uploading 20200414214828873.png…]()
 
+
 基于tk opencv-python face_recognition Pillow库开发
 安装依赖`pip install tk opencv-python face_recognition Pillow`
 `pip install git+https://github.com/ageitgey/face_recognition_models`
