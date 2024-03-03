@@ -8,7 +8,7 @@
 安装visual studio2019 安装包附在根目录下
 安装C++的环境
 
-![Uploading 20200414214828873.png…]()
+![image]([https://github.com/MaiEmily/map/blob/master/public/image/20190528145810708.png](https://github.com/wangyifan20080208/face-sign-in/blob/main/20200414214828873.png))
 
 
 基于tk opencv-python face_recognition Pillow库开发
