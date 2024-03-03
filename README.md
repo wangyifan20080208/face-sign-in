@@ -7,9 +7,7 @@
 ### python
 安装visual studio2019 安装包附在根目录下
 安装C++的环境
-
-![image]([https://github.com/MaiEmily/map/blob/master/public/image/20190528145810708.png](https://github.com/wangyifan20080208/face-sign-in/blob/main/20200414214828873.png))
-
+安装python开发，使用c++的桌面开发，具体查看根目录中图片20200414214828873.png
 
 基于tk opencv-python face_recognition Pillow库开发
 安装依赖`pip install tk opencv-python face_recognition Pillow`
@@ -23,12 +21,6 @@ cv-python face_recognition Pillow -i https://pypi.tuna.tsinghua.edu.cn/simple`
 安装后在程序目录内使用cmd(windows)运行
 
 `python main.py`
-
-### docker
-
-开发中
-
-***
 
 以下是所使用的python库
 
