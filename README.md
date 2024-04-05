@@ -10,7 +10,7 @@
 安装python开发，使用c++的桌面开发，具体查看根目录中图片20200414214828873.png
 
 基于tk opencv-python face_recognition Pillow库开发
-安装依赖`pip install tk opencv-python face_recognition Pillow`
+安装依赖`pip install tk opencv-python face_recognition Pillow openpyxl pandas`
 `pip install git+https://github.com/ageitgey/face_recognition_models`
 
 如失败，请运行`pip install tk open

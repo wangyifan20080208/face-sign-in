@@ -4,11 +4,16 @@ import cv2
 import face_recognition
 from PIL import Image, ImageTk
 import pickle
+import datetime
+import pandas as pd
 
+#定义变量通知启动子功能
 class FaceRecognitionApp:
+
     def __init__(self, root):
+
         self.root = root
-        self.root.title("人脸识别登录")
+        self.root.title("人脸识别提交")
         self.root.configure(bg="#ffffff")  # 设置背景色
 
         # 初始化摄像头
@@ -21,7 +26,7 @@ class FaceRecognitionApp:
         self.entry = tk.Entry(root, font=('Segoe UI', 12))
         self.entry.pack(pady=10, padx=20, ipadx=10, ipady=5, fill=tk.X)
 
-        self.login_button = tk.Button(root, text="登录", command=self.login, font=('Segoe UI', 12), bg="#4caf50", fg="white", relief=tk.FLAT)
+        self.login_button = tk.Button(root, text="提交", command=self.login, font=('Segoe UI', 12), bg="#4caf50", fg="white", relief=tk.FLAT)
         self.login_button.pack(pady=10, padx=20, ipadx=10, ipady=5, fill=tk.X)
         self.login_button.bind("<Enter>", self.on_enter)
         self.login_button.bind("<Leave>", self.on_leave)
@@ -37,44 +42,68 @@ class FaceRecognitionApp:
         # 开始捕获摄像头图像
         self.start_capture()
 
+
     def on_enter(self, event):
         event.widget.config(bg="#64b5f6")
+
 
     def on_leave(self, event):
         event.widget.config(bg="#2196f3")
 
+
     def login(self):
+        
         username = self.entry.get()
 
         if username in self.user_faces:
             user_encoding = self.user_faces[username]["encoding"]
 
+
             # 读取摄像头图像
             ret, frame = self.video_capture.read()
+
 
             # 检测摄像头中的人脸
             face_locations = face_recognition.face_locations(frame)
             face_encodings = face_recognition.face_encodings(frame, face_locations)
 
-            # 比对人脸
-            for face_encoding in face_encodings:
-                # 计算欧氏距离
-                distance = face_recognition.face_distance([user_encoding], face_encoding)
-                similarity = 1 - distance[0]  # 相似度越大越相似
+        # 比对人脸
 
-                if similarity > 0.6:  
-                    messagebox.showinfo("登录成功", f"欢迎回来，{username}，相似度：{similarity:.2f}")
-                    self.video_capture.release()
-                    self.root.destroy()
-                    #print(frame)
-                    break
-                else:
-                    messagebox.showerror("登录失败", f"相似度不足，无法登录，相似度：{similarity:.2f}")
-                    break
+        for face_encoding in face_encodings:
+
+            # 计算欧氏距离
+            distance = face_recognition.face_distance([user_encoding], face_encoding)
+            similarity = 1 - distance[0]  # 相似度越大越相似
+
+            if similarity > 0.6:       
+                messagebox.showinfo("提交成功", f"恭喜{username}已完成。")#，相似度：{similarity:.2f}
+                self.video_capture.release()
+                self.root.destroy()
+
+                # 获取当前时间
+                current_time = datetime.datetime.now()
+
+                # 创建一个名为"统计.xlsx"的文件，如果文件已存在，则打开该文件
+                try:
+                    df = pd.read_excel('统计.xlsx')
+                except FileNotFoundError:
+                    df = pd.DataFrame(columns=['用户名', '提交时间'])
+
+                # 创建一个新的数据行，包含用户名和登录时间
+                new_row = {'用户名': username, '提交时间': current_time}
+
+                # 将新的数据行添加到xlsx文件中
+                df = df._append(new_row, ignore_index=True)
+
+                # 保存xlsx文件
+                df.to_excel('统计.xlsx', index=False)
+
+                break
             else:
-                messagebox.showerror("登录失败", "未能识别出您的人脸，请重试")
+                messagebox.showerror("提交失败", f"相似度不足，无提交录，相似度：{similarity:.2f}")
+                break
         else:
-            messagebox.showerror("用户不存在", "请先录入人脸")
+            messagebox.showerror("提交失败", "未能识别出您的人脸，请重试")
 
     def register_face(self):
         username = self.entry.get()
@@ -137,6 +166,8 @@ class FaceRecognitionApp:
             pickle.dump(self.user_faces, file)
 
 if __name__ == "__main__":
-    root = tk.Tk()
-    app = FaceRecognitionApp(root)
-    root.mainloop()
+    while True:
+        root = tk.Tk()
+        app = FaceRecognitionApp(root)
+        root.mainloop()
+    
