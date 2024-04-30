@@ -3,7 +3,7 @@
 声明：本项目已基于Apache 2.0协议开源,github链接“https://github.com/wangyifan20080208/face-sign-in”
 
 ## 运行环境搭建
-
+请提前安装git，face_recognition_models安装库依赖于git
 ### python
 安装visual studio2019 安装包附在根目录下
 安装C++的环境
