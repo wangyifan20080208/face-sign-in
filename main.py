@@ -6,8 +6,6 @@ from PIL import Image, ImageTk
 import pickle
 import datetime
 import pandas as pd
-import pandas as pd
-from datetime import datetime
 
 #定义变量通知启动子功能
 class FaceRecognitionApp:
