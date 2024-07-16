@@ -4,12 +4,16 @@ import cv2
 import face_recognition
 from PIL import Image, ImageTk
 import pickle
+import datetime
+import pandas as pd
 import pandas as pd
 from datetime import datetime
 
+#定义变量通知启动子功能
 class FaceRecognitionApp:
 
     def __init__(self, root):
+
         self.root = root
         self.setup_gui()
         self.video_capture = cv2.VideoCapture(0)
@@ -40,8 +44,10 @@ class FaceRecognitionApp:
         self.image_label = tk.Label(self.root)
         self.image_label.pack(pady=10)
 
+
     def on_enter(self, event):
         event.widget.config(bg="#64b5f6")
+
 
     def on_leave(self, event):
         event.widget.config(bg="#2196f3")

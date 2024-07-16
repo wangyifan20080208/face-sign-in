@@ -3,7 +3,7 @@
 声明：本项目已基于Apache 2.0协议开源,github链接“https://github.com/wangyifan20080208/face-sign-in”
 
 ## 运行环境搭建
-
+请提前安装git，face_recognition_models安装库依赖于git
 ### python
 安装visual studio2019 安装包附在根目录下
 安装C++的环境
@@ -13,7 +13,7 @@
 见https://github.com/z-mahmud22/Dlib_Windows_Python3.x
 
 基于tk opencv-python face_recognition Pillow库开发
-`pip install tk opencv-python face_recognition Pillow CMake -i https://pypi.tuna.tsinghua.edu.cn/simple`
+`pip install CMake tk opencv-python face_recognition Pillow  -i https://pypi.tuna.tsinghua.edu.cn/simple`
 
 安装后在程序目录内使用cmd(windows)运行
 
